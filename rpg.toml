@@ -1,6 +1,7 @@
-name = 'My Game'
+name = 'Artist Village'
 
 modules = [
+   '@rpgjs/plugin-emotion-bubbles',
     './main',
     '@rpgjs/mobile-gui',
     '@rpgjs/default-gui',
