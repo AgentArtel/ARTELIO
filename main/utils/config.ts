@@ -12,10 +12,10 @@ dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 export const config = {
   // Webhook URLs
   webhooks: {
-    artGeneration: process.env.ART_GENERATION_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook-test/generate-art',
-    npcDialogue: process.env.NPC_DIALOGUE_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook-test/chat',
-    questGiver: process.env.QUEST_GIVER_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook-test/quest_giver',
-    artGenerator: process.env.ART_GENERATOR_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook-test/generate-art',
+    artGeneration: process.env.ART_GENERATION_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/generate-art',
+    npcDialogue: process.env.NPC_DIALOGUE_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/chat',
+    questGiver: process.env.QUEST_GIVER_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/quest_giver',
+    artGenerator: process.env.ART_GENERATOR_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/generate-art',
   },
   
   // Default assets
