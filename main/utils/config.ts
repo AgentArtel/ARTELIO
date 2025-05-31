@@ -16,6 +16,7 @@ export const config = {
     npcDialogue: process.env.NPC_DIALOGUE_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/chat',
     questGiver: process.env.QUEST_GIVER_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/quest_giver',
     artGenerator: process.env.ART_GENERATOR_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/generate-art',
+    cleanCodeMentor: process.env.CLEAN_CODE_MENTOR_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/clean-code-mentor',
   },
   
   // Default assets
@@ -31,7 +32,8 @@ export const config = {
       dreamInterpreter: process.env.AGENT_ARTEL_DREAM_INTERPRETER || 'sigmund-freud',
       historyMentor: process.env.AGENT_ARTEL_HISTORY_MENTOR || 'history-mentor',
       scienceMentor: process.env.AGENT_ARTEL_SCIENCE_MENTOR || 'science-mentor',
-      mentalHealthGuide: process.env.AGENT_ARTEL_MENTAL_HEALTH_GUIDE || 'mental-health-guide'
+      mentalHealthGuide: process.env.AGENT_ARTEL_MENTAL_HEALTH_GUIDE || 'mental-health-guide',
+      cleanCodeMentor: process.env.AGENT_ARTEL_CLEAN_CODE_MENTOR || 'uncle-bob'
     }
   },
   
