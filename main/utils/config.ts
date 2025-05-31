@@ -23,9 +23,26 @@ export const config = {
     villagePainting: process.env.DEFAULT_PAINTING_URL || 'https://cdn.midjourney.com/c21f4371-f4ea-465d-87fc-c28e66576b5c/0_2.png',
   },
   
+  // AgentArtel API configuration
+  agentArtel: {
+    apiKey: process.env.AGENT_ARTEL_API_KEY || 'YOUR_API_KEY_HERE', // Set this in .env file
+    baseUrl: process.env.AGENT_ARTEL_BASE_URL || 'https://agent-artel-production.up.railway.app',
+    agents: {
+      dreamInterpreter: process.env.AGENT_ARTEL_DREAM_INTERPRETER || 'sigmund-freud',
+      historyMentor: process.env.AGENT_ARTEL_HISTORY_MENTOR || 'history-mentor',
+      scienceMentor: process.env.AGENT_ARTEL_SCIENCE_MENTOR || 'science-mentor',
+      mentalHealthGuide: process.env.AGENT_ARTEL_MENTAL_HEALTH_GUIDE || 'mental-health-guide'
+    }
+  },
+  
   // Helper method to get a webhook URL by name
   getWebhookUrl(name: string): string {
     return this.webhooks[name] || '';
+  },
+  
+  // Helper method to get an AgentArtel agent ID
+  getAgentId(name: string): string {
+    return this.agentArtel.agents[name] || '';
   }
 };
 

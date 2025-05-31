@@ -54,5 +54,8 @@
 <object id="22" name="villager" x="400" y="250">
   <point/>
 </object>
+<object id="23" name="village-dream-interpreter" x="480" y="330">
+  <point/>
+</object>
  </objectgroup>
 </map>
