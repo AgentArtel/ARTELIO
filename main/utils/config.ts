@@ -10,13 +10,27 @@ dotenv.config({ path: path.resolve(process.cwd(), '.env') });
  * This centralizes all external integrations and configuration values
  */
 export const config = {
-  // Webhook URLs
+  // Webhook URLs - Standardized by skill/purpose
   webhooks: {
-    artGeneration: process.env.ART_GENERATION_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/generate-art',
-    npcDialogue: process.env.NPC_DIALOGUE_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/chat',
-    questGiver: process.env.QUEST_GIVER_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/quest_giver',
-    artGenerator: process.env.ART_GENERATOR_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/generate-art',
-    cleanCodeMentor: process.env.CLEAN_CODE_MENTOR_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/clean-code-mentor',
+    generation: {
+      initialFragment: process.env.GET_ITEM_WEBHOOK_URL || 'https://your-default-get-item-url.com/placeholder', // For EchoWeaverNpc
+      // Example: dynamicQuest: process.env.DYNAMIC_QUEST_GENERATION_URL
+      artGeneration: process.env.ART_GENERATION_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/generate-art', // Moved existing
+      artGenerator: process.env.ART_GENERATOR_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/generate-art', // Moved existing (duplicate of artGeneration?)
+    },
+    processing: {
+      mediaFragment: process.env.PROCESS_FRAGMENT_WEBHOOK_URL || 'https://your-default-process-fragment-url.com/placeholder', // For EchoSeerNpc
+      // Example: imageAnalysis: process.env.IMAGE_ANALYSIS_URL
+    },
+    dialogue: {
+      agentArtelChat: process.env.AGENT_ARTEL_CHAT_WEBHOOK_URL || 'https://your-default-agentartel-chat-url.com/placeholder', // General AgentArtel chat
+      npcGeneral: process.env.NPC_DIALOGUE_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/chat', // Moved existing (generic NPC chat)
+      questGiver: process.env.QUEST_GIVER_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/quest_giver', // Moved existing
+      cleanCodeMentor: process.env.CLEAN_CODE_MENTOR_WEBHOOK_URL || 'https://theagentartel.app.n8n.cloud/webhook/clean-code-mentor', // Moved existing
+    },
+    // utility: {
+    //   // Example: sentimentAnalysis: process.env.SENTIMENT_ANALYSIS_URL
+    // }
   },
   
   // Default assets
@@ -37,9 +51,13 @@ export const config = {
     }
   },
   
-  // Helper method to get a webhook URL by name
-  getWebhookUrl(name: string): string {
-    return this.webhooks[name] || '';
+  // Helper method to get a webhook URL by category and name
+  getWebhookUrl(category: 'generation' | 'processing' | 'dialogue' /* | 'utility' */, name: string): string {
+    if (this.webhooks[category] && this.webhooks[category][name]) {
+      return this.webhooks[category][name];
+    }
+    console.warn(`Webhook URL not found for category '${category}' and name '${name}' in config.ts`);
+    return ''; // Return empty string or a default placeholder if preferred
   },
   
   // Helper method to get an AgentArtel agent ID

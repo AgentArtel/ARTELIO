@@ -5,6 +5,8 @@ import ShopkeeperEvent from './shopkeeper'
 import VillagerEvent from './villager'
 import PhotographerEvent from './photographer'
 import QuestGiverEvent from './quest-giver'
+import EchoWeaverNpc from './EchoWeaverNpc'
+import EchoSeerNpc from './EchoSeerNpc' // Added EchoSeerNpc import
 
 export default {
     events: [
@@ -13,6 +15,8 @@ export default {
         ShopkeeperEvent,
         MentorEvent,
         PhotographerEvent,
-        QuestGiverEvent
+        QuestGiverEvent,
+        EchoWeaverNpc,
+        EchoSeerNpc // Added EchoSeerNpc to the array
     ]
 } as RpgModule
